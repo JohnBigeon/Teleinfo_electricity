@@ -79,10 +79,11 @@ ifconfig
 ````
 ````
 wlo1: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
-        inet 192.168.1.21  netmask 255.255.255.0  broadcast 192.168.1.255
+        inet 192.168.a.xx  netmask 255.255.255.0  broadcast 192.168.1.255
 ````
+Scan the network
 ````
-sudo nmap 192.168.1.*
+sudo nmap 192.168.a.*
 ````
 ````
 Nmap scan report for raspberrypi.home (192.168.a.bb)
@@ -91,6 +92,8 @@ Not shown: 999 closed ports
 PORT   STATE SERVICE
 22/tcp open  ssh
 ````
+If the raspberry is connected to the wifi, you should see him with an ip's address: **192.168.a.bb**.
+Make a ssh to be connected with the raspberry
 ````
 ssh pi@192.168.a.bb
 ````
