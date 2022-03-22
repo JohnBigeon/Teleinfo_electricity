@@ -41,14 +41,14 @@ To install Raspbian on the card, we will use the command dd, which perform a cop
 sudo dd bs=1M if=2022-01-28-raspios-bullseye-armhf.img of=/dev/mmcblk0 status=progress conv=fsync
 ```
 
-## Enable remote access
-### SSH
-Navigate to the /boot/ directory
+### Enable remote access
+#### SSH
+Navigate on your SD card to the /boot/directory and add a empty file with:
 ````
 touch ssh
 ````
 
-### Connect the Raspberry pi to the Wifi
+#### Connect the Raspberry pi to the Wifi
 
 In boot directory, create a new file called wpa_supplicant.conf, which will hold the necessary credentials required to connect to the WIFI network. Open a new file (wpa_supplicant.conf) with your text editor and paste the contents below.
 
@@ -64,7 +64,7 @@ network={
 }
 ````
 
-### Connect your laptop to the Raspberry pi via ethernet cable
+#### Connect your laptop to the Raspberry pi via ethernet cable
 ````
 ping raspberrypi.local
 ````
@@ -72,7 +72,7 @@ ping raspberrypi.local
 ssh pi@raspberrypi.local
 ````
 
-### Connect your laptop to the Raspberry pi via router
+#### Connect your laptop to the Raspberry pi via router
 ````
 ifconfig
 ````
@@ -84,17 +84,17 @@ wlo1: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
 sudo nmap 192.168.1.*
 ````
 ````
-Nmap scan report for raspberrypi.home (192.168.1.55)
+Nmap scan report for raspberrypi.home (192.168.1.35)
 Host is up (0.017s latency).
 Not shown: 999 closed ports
 PORT   STATE SERVICE
 22/tcp open  ssh
 ````
 ````
-ssh pi@192.168.1.55
+ssh pi@192.168.1.35
 ````
 
-# Enable remote access to GPIO pins
+#### Enable remote access to GPIO pins
 Execute the command : "sudo raspi-config"
 Go to "Interfacing Options"
 Go to "Remote GPIO"
@@ -114,13 +114,25 @@ To run the daemon once using systemctl, run:
 ````
 sudo systemctl start pigpiod
 ````
-
+#### Activate serial port
+````
+sudo raspi-config
+````
+#### Activate uart
+In the folder /boot/cmdline.txt, add at the end: 
+````
+enable_uart=1
+````
+delete
+````
+console=serial0,115200
+````
 Then install GPIO Zero and the pigpio library for Python 3:
 ````
 $ sudo apt install python3-gpiozero python3-pigpio
 ````
 
-## Test first script with LED blinking
+### Test first script with LED blinking
 ````
 mkdir Scripts
 cd Scripts
@@ -143,23 +155,23 @@ Execute script
 ````
 python3 blink_LED_v01.py
 ````
-## Fritzing
+#### Fritzing
 resistance = 220 Ohms
 
-# Teleinfo
-## Libraries
+## Teleinfo
+### Libraries
 ````
 sudo apt update
 sudo apt upgrade
 sudo apt install git-core libmysqlclient-dev libcurl4-openssl-dev
 ````
-## Teleinfo
 ````
 git clone https://github.com/hallard/teleinfo/
 cd teleinfo
 make
 sudo make install
 ````
+#### Errors:
 ````
 fatal error: mysql/mysql.h: No such file or directory
 ````
@@ -171,19 +183,6 @@ fatal error: curl/curl.h: No such file or directory
 ````
 ````
 sudo apt install libcurl4-openssl-dev
-````
-#### Activate serial port
-````
-sudo raspi-config
-````
-#### Activate uart
-In the folder /boot/cmdline.txt, add at the end: 
-````
-enable_uart=1
-````
-delete
-````
-console=serial0,115200
 ````
 
 ### First try
@@ -278,29 +277,36 @@ Test if apache is installed
 on your computer, type in firefox the ip's address of your raspberry
 ````
 http://192.168.1.35
-````
 
 create files in /var/www/html/ teleinfo_puissance.php, ...
+````
 sudo nano teleinfo_puissance.php 
-
+````
 See cron job
+````
 crontab -l
+````
 add to cron
+````
 crontabl -e
+````
+````
 * * * * * /usr/bin/php /var/www/html/teleinfo_puissance.php
 * * * * * /usr/bin/php /var/www/html/teleinfo_conso.php
-
+````
 check cron excecution
+````
 grep CRON /var/log/syslog
-Mar 20 15:27:01 raspberrypi CRON[20120]: (CRON) info (No MTA installed, discarding output)
-
+````
+````
 sudo apt-get install postfix
 Check connection
-
+````
 picocom -b 1200 -d 7 -p e -f n /dev/ttyS0
-
+````
+````
 sudo cat /dev/ttyS0
-
+````
 ## Locate php for cron
 whereis php7
 Catch error 
