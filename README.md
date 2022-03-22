@@ -300,6 +300,7 @@ grep CRON /var/log/syslog
 ````
 ````
 sudo apt-get install postfix
+````
 Check connection
 ````
 picocom -b 1200 -d 7 -p e -f n /dev/ttyS0
