@@ -303,6 +303,21 @@ sudo apt install libmariadb-dev-compat libmariadb-dev mariadb-server
 ````
 
 ### First try
+We need to complete informations of the database where the data will be send.
+Source: https://community.ch2i.eu/topic/44/configuration-mysql
+
+````
+nano teleinfo.conf
+````
+````
+mysql = 0
+server = localhost
+user = root
+password = bb
+database = bdd_teleinfo
+table = DbiTeleinfo
+mysql_port = 3306
+````
 ````
 sudo cp teleinfo.conf /etc/
 ````
@@ -311,6 +326,10 @@ teleinfo --help
 ````
 ````
 teleinfo -m test
+````
+Pour tuer le daemon il suffit de faire la commande 
+````
+killall teleinfo
 ````
 ### PHP installation
 ````
@@ -345,6 +364,7 @@ http://192.168.a.bb:8080/#/Utility
 ````
 mysql -u root -p
 ````
+Now, create a database
 ````
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
 Your MariaDB connection id is 229
@@ -414,25 +434,6 @@ Query OK, 0 rows affected (0.015 sec)
 MariaDB [data_test]> exit
 Bye
 ````
-## Must have forum
-https://community.ch2i.eu/topic/44/configuration-mysql/6
-
-Pour tuer le daemon il suffit de faire la commande 
-````
-killall teleinfo
-````
-````
-nano teleinfo.conf
-````
-````
-mysql = 0
-server = localhost
-user = root
-password = bb
-database = bdd_teleinfo
-table = DbiTeleinfo
-mysql_port = 3306
-````
 
 ### Check the database
 via phpMyAdmin
@@ -445,6 +446,7 @@ On your laptop
 ````
 http://192.168.a.bb/phpmyadmin
 ````
+the password defined previously will be asked.
 
 ````
 crontab -l
@@ -485,10 +487,6 @@ perl: warning: Falling back to a fallback locale ("en_GB.UTF-8").
 sudo locale-gen
 ````
 
-http://192.168.a.bb/phpmyadmin
-
-
-
 ## Grafana
 ### Install Grafana
 Source: https://grafana.com/tutorials/install-grafana-on-raspberry-pi/
@@ -513,10 +511,13 @@ Start the Grafana server:
 sudo /bin/systemctl start grafana-server
 ````
 
-
-
-Log on graphana @ your computer
+### Display
+Log on graphana on your computer
+````
 http://192.168.a.bb:3000
+````
+During the first connection, the login/password are *admin* and *admin*.
+You should see something like that here.
 
 ### add the data source
 
