@@ -172,43 +172,7 @@ python3 blink_LED_v01.py
 resistance = 220 Ohms
 
 ## Teleinfo
-### Libraries
-````
-sudo apt update
-sudo apt upgrade
-sudo apt install git-core libmysqlclient-dev libcurl4-openssl-dev
-````
-````
-git clone https://github.com/hallard/teleinfo/
-cd teleinfo
-make
-sudo make install
-````
-#### Errors:
-````
-fatal error: mysql/mysql.h: No such file or directory
-````
-````
-sudo apt install libmariadb-dev-compat libmariadb-dev mariadb-server
-````
-````
-fatal error: curl/curl.h: No such file or directory
-````
-````
-sudo apt install libcurl4-openssl-dev
-````
-
-### First try
-````
-sudo cp teleinfo.conf /etc/
-````
-````
-teleinfo --help
-````
-````
-teleinfo -m test
-````
-### Test serial port
+### Check connection with   serial port
 ````
 picocom -b 1200 -d 7 -p e -f n /dev/ttyS0
 picocom v3.1
@@ -234,7 +198,40 @@ logfile is     : none
 initstring     : none
 exit_after is  : not set
 exit is        : no
+````
+````
+sudo cat /dev/ttyS0
+````
+### Libraries required
+````
+sudo apt update
+sudo apt upgrade
+sudo apt install git-core libmysqlclient-dev libcurl4-openssl-dev
+````
+````
+git clone https://github.com/hallard/teleinfo/
+cd teleinfo
+make
+sudo make install
+````
+#### Errors:
+````
+mysql/mysql.h: No such file or directory
+curl/curl.h: No such file or directory
+````
+````
+sudo apt install libmariadb-dev-compat libmariadb-dev mariadb-server
+````
 
+### First try
+````
+sudo cp teleinfo.conf /etc/
+````
+````
+teleinfo --help
+````
+````
+teleinfo -m test
 ````
  
 ### Data
@@ -288,37 +285,6 @@ sudo apt install sqlite3
 On your computer, test if apache is installed, type in firefox the ip's address of your raspberry
 ````
 http://192.168.a.bb
-````
-
-create files in /var/www/html/ teleinfo_puissance.php, ...
-````
-sudo nano teleinfo_puissance.php 
-````
-See cron job
-````
-crontab -l
-````
-add to cron
-````
-crontabl -e
-````
-````
-* * * * * /usr/bin/php /var/www/html/teleinfo_puissance.php
-* * * * * /usr/bin/php /var/www/html/teleinfo_conso.php
-````
-check cron excecution
-````
-grep CRON /var/log/syslog
-````
-````
-sudo apt-get install postfix
-````
-Check connection
-````
-picocom -b 1200 -d 7 -p e -f n /dev/ttyS0
-````
-````
-sudo cat /dev/ttyS0
 ````
 ## Locate php for cron
 whereis php7
@@ -541,4 +507,23 @@ FileNotFoundError: [Errno 2] No such file or directory: ‘/var/log/teleinfo/rel
 mkdir /var/log/teleinfo/
 ````
  
- 
+ #### Job scheduler with cron
+See cron job
+````
+crontab -l
+````
+add to cron
+````
+crontabl -e
+````
+````
+* * * * * /usr/bin/php /var/www/html/teleinfo_puissance.php
+* * * * * /usr/bin/php /var/www/html/teleinfo_conso.php
+````
+check cron excecution
+````
+grep CRON /var/log/syslog
+````
+````
+sudo apt-get install postfix
+````
