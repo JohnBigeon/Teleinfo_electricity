@@ -1,7 +1,10 @@
 # Teleinfo_electricity
 
 ## Concept
-Display (remote) electricity consumption of the house with a Raspberry Pi connected to a 'french compteur'.
+Display (remote) electricity consumption of the house with a Raspberry Pi connected to a 'french compteur'. In this repository, data are read from serial port with the shield PiTInfo (~15€) https://www.tindie.com/products/hallard/micro-teleinfo-v20/ and based on the package teleinfo developed by C. Hallard https://github.com/hallard/teleinfo .
+
+Her, I just *summarise* three different methods to display informations (and how to install them): via php based on BmdOnline/Teleinfo https://github.com/BmdOnline/Teleinfo, via Domoticz package and finnaly via Grafana/InfluxDB developed by S. Reuiller https://github.com/SebastienReuiller/teleinfo-linky-with-raspberry and https://sebastienreuiller.fr/blog/monitorer-son-compteur-linky-avec-grafana-cest-possible-et-ca-tourne-sur-un-raspberry-pi .
+**Special thanks to them**.
 
 ## Raspberry Pi
 
