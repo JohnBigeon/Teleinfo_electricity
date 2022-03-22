@@ -202,39 +202,9 @@ exit is        : no
 ````
 sudo cat /dev/ttyS0
 ````
-### Libraries required
-````
-sudo apt update
-sudo apt upgrade
-sudo apt install git-core libmysqlclient-dev libcurl4-openssl-dev
-````
-````
-git clone https://github.com/hallard/teleinfo/
-cd teleinfo
-make
-sudo make install
-````
-#### Errors:
-````
-mysql/mysql.h: No such file or directory
-curl/curl.h: No such file or directory
-````
-````
-sudo apt install libmariadb-dev-compat libmariadb-dev mariadb-server
-````
+You should see data on your console, now.
 
-### First try
-````
-sudo cp teleinfo.conf /etc/
-````
-````
-teleinfo --help
-````
-````
-teleinfo -m test
-````
- 
-### Data
+### Data explained
 Source: https://www.magdiblog.fr/gpio/teleinfo-edf-suivi-conso-de-votre-compteur-electrique/
 ````
 Données de la téléinfo EDF
@@ -272,6 +242,39 @@ Chaque message, ou ligne, d’une trame est formé de la manière suivante :
     ETIQUETTE espace VALEUR espace CHECKSUM
 
 Seules l’ETIQUETTE et la VALEUR nous seront utiles. La CHEKSUM, ou somme de contrôle sert uniquement à vérifier l’intégrité que la trame.
+````
+
+
+### Libraries required
+````
+sudo apt update
+sudo apt upgrade
+sudo apt install git-core libmysqlclient-dev libcurl4-openssl-dev
+````
+````
+git clone https://github.com/hallard/teleinfo/
+cd teleinfo
+make
+sudo make install
+````
+#### Errors:
+````
+mysql/mysql.h: No such file or directory
+curl/curl.h: No such file or directory
+````
+````
+sudo apt install libmariadb-dev-compat libmariadb-dev mariadb-server
+````
+
+### First try
+````
+sudo cp teleinfo.conf /etc/
+````
+````
+teleinfo --help
+````
+````
+teleinfo -m test
 ````
 ### PHP installation
 ````
