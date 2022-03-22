@@ -430,9 +430,13 @@ Bye
 https://community.ch2i.eu/topic/44/configuration-mysql/6
 
 Pour tuer le daemon il suffit de faire la commande 
+````
 killall teleinfo
-
-edit teleinfo.conf
+````
+````
+nano teleinfo.conf
+````
+````
 mysql = 0
 server = localhost
 user = root
@@ -440,25 +444,28 @@ password = bb
 database = bdd_teleinfo
 table = DbiTeleinfo
 mysql_port = 3306
+````
 
-
-# Check the database
-
+### Check the database
+````
 crontab -l
+````
+````
 */ * * * * sudo teleinfo -m r -q
-
+````
+````
 crontab -e
-
-
+````
+````
 cp -r Teleinfo/  /var/www/html/
-pi@raspberrypi:/var/www $ sudo chown -R pi:www-data /var/www/html/
-pi@raspberrypi:/var/www $ sudo chmod -R 770 /var/www/html/
-
+sudo chown -R pi:www-data /var/www/html/
+sudo chmod -R 770 /var/www/html/
 cp -r Teleinfo/  /var/www/html/
+````
 http://192.168.1.35/Teleinfo/teleinfo.php
 
 
-
+````
 perl: warning: Please check that your locale settings:
         LANGUAGE = (unset),
         LC_ALL = (unset),
@@ -474,53 +481,52 @@ perl: warning: Please check that your locale settings:
         LANG = "en_GB.UTF-8"
     are supported and installed on your system.
 perl: warning: Falling back to a fallback locale ("en_GB.UTF-8").
-
-pi@raspberrypi:~/Compteur_EDF/With_grafana $ sudo locale-gen
-
+````
+````
+sudo locale-gen
+````
 
 
 
 
 Install Grafana
-
-Now that you’ve got the Raspberry Pi up and running, the next step is to install Grafana.
-
-    Add the APT key used to authenticate packages:
-
-    wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
-
-    Add the Grafana APT repository:
-
-    echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
-
-    Install Grafana:
-
-    sudo apt-get update
-    sudo apt-get install -y grafana
-
-Grafana is now installed, but not yet running. To make sure Grafana starts up even if the Raspberry Pi is restarted, we need to enable and start the Grafana Systemctl service.
-
-    Enable the Grafana server:
-
-    sudo /bin/systemctl enable grafana-server
-
-    Start the Grafana server:
-
-    sudo /bin/systemctl start grafana-server
-
+Source: https://grafana.com/tutorials/install-grafana-on-raspberry-pi/
+Add the APT key used to authenticate packages:
+````
+wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
+````
+Add the Grafana APT repository:
+````
+echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
+````
+````
+sudo apt-get update
+sudo apt-get install -y grafana
+````
+To make sure Grafana starts up even if the Raspberry Pi is restarted, we need to enable and start the Grafana Systemctl service.
+````
+sudo /bin/systemctl enable grafana-server
+````
+Start the Grafana server:
+````
+sudo /bin/systemctl start grafana-server
+````
 
 
 
 Log on graphana @ your computer
 http://192.168.1.35:3000
+
 add the source of information
 Data sources. The data sources page opens showing a list of previously configured data sources for the Grafana instance.
 
 Click Add data source 'InfluxDB'
 
-
-
- FileNotFoundError: [Errno 2] No such file or directory: ‘/var/log/teleinfo/releve.log’
- mkdir /var/log/teleinfo/
+````
+FileNotFoundError: [Errno 2] No such file or directory: ‘/var/log/teleinfo/releve.log’
+````
+````
+mkdir /var/log/teleinfo/
+````
  
  
