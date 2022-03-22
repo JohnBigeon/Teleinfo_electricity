@@ -105,6 +105,15 @@ uname -a
 Linux raspberrypi 5.10.103-v7l+ #1530 SMP Tue Mar 8 13:05:01 GMT 2022 armv7l GNU/Linux
 ````
 
+To shutdown your raspberry
+````
+sudo shutdown -h now
+````
+or reboot
+````
+sudo reboot
+````
+
 #### Enable remote access to GPIO pins
 Execute the command:
 ````
@@ -239,11 +248,10 @@ Une trame commence toujours par l’étiquette ADCO et se termine par le MOTDETA
 
 Chaque message, ou ligne, d’une trame est formé de la manière suivante :
 
-    ETIQUETTE espace VALEUR espace CHECKSUM
+ETIQUETTE espace VALEUR espace CHECKSUM
 
 Seules l’ETIQUETTE et la VALEUR nous seront utiles. La CHEKSUM, ou somme de contrôle sert uniquement à vérifier l’intégrité que la trame.
 ````
-
 
 ### Libraries required
 ````
@@ -257,6 +265,34 @@ cd teleinfo
 make
 sudo make install
 ````
+send 1 frame on database to check connection
+````
+teleinfo -m r -q
+````
+````
+teleinfo 1.0.8 Statistics
+==========================
+Frames Sent         : 0
+Frames checked      : 1
+Frames OK           : 1
+Checksum errors     : 0
+Frame format Errors : 0
+Frame size Errors   : 0
+MySQL init OK       : 1
+MySQL init errors   : 0
+MySQL connect OK    : 1
+MySQL connect errors: 0
+MySQL queries OK    : 1
+MySQL queries errors: 0
+EmonCMS total post  : 0
+EmonCMS post OK     : 0
+EmonCMS post errors : 0
+EmonCMS timeout     : 0
+--------------------------
+````
+
+
+
 #### Errors:
 ````
 mysql/mysql.h: No such file or directory
@@ -289,50 +325,23 @@ On your computer, test if apache is installed, type in firefox the ip's address 
 ````
 http://192.168.a.bb
 ````
-## Locate php for cron
-whereis php7
-Catch error 
+Catch error if needed with
+````
 tail -2 /var/log/apache2/error.log 
-
-shutdown_button.py · Execute the command: 
-sudo shutdown -h now
-
+````
+````
 sudo apt install mariadb-server-10.0
-
+````
+## Domoticz
 install with curl domoticz/
+````
+ curl -sSL install.domoticz.com | sudo bash 
+````
+Just point your browser to the IP address of your Raspberry Pi, and use the port specified during the installation script.
+````
 http://192.168.a.bb:8080/#/Utility
-
-
-
-
-
-
-
-send 1 frame on database to check connection
 ````
-teleinfo -m r -q
-````
-````
-teleinfo 1.0.8 Statistics
-==========================
-Frames Sent         : 0
-Frames checked      : 1
-Frames OK           : 1
-Checksum errors     : 0
-Frame format Errors : 0
-Frame size Errors   : 0
-MySQL init OK       : 1
-MySQL init errors   : 0
-MySQL connect OK    : 1
-MySQL connect errors: 0
-MySQL queries OK    : 1
-MySQL queries errors: 0
-EmonCMS total post  : 0
-EmonCMS post OK     : 0
-EmonCMS post errors : 0
-EmonCMS timeout     : 0
---------------------------
-````
+
 
 ## Create database
 ````
@@ -467,10 +476,12 @@ perl: warning: Falling back to a fallback locale ("en_GB.UTF-8").
 sudo locale-gen
 ````
 
+http://192.168.a.bb/phpmyadmin
 
 
 
-Install Grafana
+## Grafana
+### Install Grafana
 Source: https://grafana.com/tutorials/install-grafana-on-raspberry-pi/
 Add the APT key used to authenticate packages:
 ````
@@ -498,8 +509,7 @@ sudo /bin/systemctl start grafana-server
 Log on graphana @ your computer
 http://192.168.a.bb:3000
 
-add the source of information
-Data sources. The data sources page opens showing a list of previously configured data sources for the Grafana instance.
+### add the data source
 
 Click Add data source 'InfluxDB'
 
