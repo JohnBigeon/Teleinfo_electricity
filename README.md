@@ -328,8 +328,10 @@ http://192.168.1.35:8080/#/Utility
 
 
 send 1 frame on database to check connection
+````
 teleinfo -m r -q
-
+````
+````
 teleinfo 1.0.8 Statistics
 ==========================
 Frames Sent         : 0
@@ -349,7 +351,7 @@ EmonCMS post OK     : 0
 EmonCMS post errors : 0
 EmonCMS timeout     : 0
 --------------------------
-
+````
 
 ## Create database
 mysql -u root -p
