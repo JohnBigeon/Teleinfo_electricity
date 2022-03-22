@@ -354,8 +354,10 @@ EmonCMS timeout     : 0
 ````
 
 ## Create database
+````
 mysql -u root -p
-Enter password: 
+````
+````
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
 Your MariaDB connection id is 229
 Server version: 10.5.12-MariaDB-0+deb11u1 Raspbian 11
@@ -423,7 +425,7 @@ Query OK, 0 rows affected (0.015 sec)
 
 MariaDB [data_test]> exit
 Bye
-
+````
 ## Must have forum
 https://community.ch2i.eu/topic/44/configuration-mysql/6
 
