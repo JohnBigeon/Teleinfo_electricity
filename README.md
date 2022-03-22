@@ -6,7 +6,7 @@ Display (remote) electricity consumption of the house with a Raspberry Pi connec
 ## Raspberry Pi
 
 ### Installation
-
+Format the sd card
 #### With graphical interface
 With rpi-imager
 ```
@@ -93,6 +93,11 @@ PORT   STATE SERVICE
 ````
 ````
 ssh pi@192.168.a.bb
+````
+Check the distribution you have
+````
+uname -a
+Linux raspberrypi 5.10.103-v7l+ #1530 SMP Tue Mar 8 13:05:01 GMT 2022 armv7l GNU/Linux
 ````
 
 #### Enable remote access to GPIO pins
@@ -530,3 +535,5 @@ FileNotFoundError: [Errno 2] No such file or directory: ‘/var/log/teleinfo/rel
 ````
 mkdir /var/log/teleinfo/
 ````
+ 
+ 
