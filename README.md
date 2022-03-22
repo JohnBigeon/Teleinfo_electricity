@@ -339,6 +339,7 @@ sudo apt install apache2 php7.4 php7.4-cli chromium openbox xinit
 sudo apt install imagemagick php7.4-imagick php7.4-gd xplanet unclutter mingetty x11-xserver-utils
 sudo apt install sqlite3
 sudo apt install mariadb-server-10.0
+sudo apt-get install postfix
 ````
 ##### Check Apache interface
 On your computer, test if apache is installed, type in firefox the ip's address of your raspberry
@@ -510,6 +511,45 @@ Start the Grafana server:
 ````
 sudo /bin/systemctl start grafana-server
 ````
+### Install the package of S. Reuiller
+````
+sudo apt install python3-pip
+sudo pip3 install pySerial influxdb
+wget https://raw.githubusercontent.com/SebastienReuiller/teleinfo-linky-with-raspberry/master/teleinfo.py
+````
+Try it:
+````
+python3 teleinfo.py
+````
+After few minutes, stop the script. 
+Now check the influxdb
+````
+ pi@raspberrypi:~ $ influx
+ Connected to http://localhost:8086 version 1.7.9
+ InfluxDB shell version: 1.7.9
+ > show DATABASES;
+ name: databases
+ name
+ ----
+ teleinfo
+ _internal
+ > USE teleinfo
+ Using database teleinfo
+ > SHOW SERIES;
+ key
+ ---
+ HCHC,host=raspberry,region=linky
+ HCHP,host=raspberry,region=linky
+ HHPHC,host=raspberry,region=linky
+ IINST,host=raspberry,region=linky
+ IMAX,host=raspberry,region=linky
+ ISOUSC,host=raspberry,region=linky
+ MOTDETAT,host=raspberry,region=linky
+ OPTARIF,host=raspberry,region=linky
+ PAPP,host=raspberry,region=linky
+ PTEC,host=raspberry,region=linky
+ ````
+ 
 
 ### Display
 Log on graphana on your computer
@@ -546,7 +586,4 @@ crontabl -e
 check cron excecution
 ````
 grep CRON /var/log/syslog
-````
-````
-sudo apt-get install postfix
 ````
