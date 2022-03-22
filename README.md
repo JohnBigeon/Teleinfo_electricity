@@ -7,9 +7,8 @@ Her, I just *summarise* three different methods to display informations (and how
 **Special thanks to them**.
 
 ## Raspberry Pi
-
 ### Installation
-Format the sd card
+First, install Raspberry Pi OS: 
 #### With graphical interface
 With rpi-imager
 ```
