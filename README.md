@@ -319,6 +319,7 @@ sudo apt install apache2 php7.4 php7.4-cli chromium openbox xinit
 ````
 sudo apt install imagemagick php7.4-imagick php7.4-gd xplanet unclutter mingetty x11-xserver-utils
 sudo apt install sqlite3
+sudo apt install mariadb-server-10.0
 ````
 ##### Check Apache interface
 On your computer, test if apache is installed, type in firefox the ip's address of your raspberry
@@ -328,9 +329,6 @@ http://192.168.a.bb
 Catch error if needed with
 ````
 tail -2 /var/log/apache2/error.log 
-````
-````
-sudo apt install mariadb-server-10.0
 ````
 ## Domoticz
 install with curl domoticz/
@@ -437,6 +435,17 @@ mysql_port = 3306
 ````
 
 ### Check the database
+via phpMyAdmin
+````
+sudo apt install phpmyadmin
+````
+Warning: When the prompt appears, “apache2” is highlighted, but not selected. If you do not hit SPACE to select Apache, the installer will not move the necessary files during installation. Hit SPACE, TAB, and then ENTER to select Apache. Define a password.
+
+On your laptop
+````
+http://192.168.a.bb/phpmyadmin
+````
+
 ````
 crontab -l
 ````
