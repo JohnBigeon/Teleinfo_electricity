@@ -73,6 +73,7 @@ ssh pi@raspberrypi.local
 ````
 
 #### Connect your laptop to the Raspberry pi via router
+On your computer:
 ````
 ifconfig
 ````
@@ -84,22 +85,24 @@ wlo1: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
 sudo nmap 192.168.1.*
 ````
 ````
-Nmap scan report for raspberrypi.home (192.168.1.35)
+Nmap scan report for raspberrypi.home (192.168.a.bb)
 Host is up (0.017s latency).
 Not shown: 999 closed ports
 PORT   STATE SERVICE
 22/tcp open  ssh
 ````
 ````
-ssh pi@192.168.1.35
+ssh pi@192.168.a.bb
 ````
 
 #### Enable remote access to GPIO pins
-Execute the command : "sudo raspi-config"
-Go to "Interfacing Options"
-Go to "Remote GPIO"
+Execute the command:
+````
+sudo raspi-config
+````
+Go to "Interfacing Options/Remote GPIO"
 Choose "Yes"
-	
+
 Be sure, the remote GPIO feature is already installed
 ````
 sudo apt install pigpio
@@ -271,12 +274,11 @@ sudo apt install apache2 php7.4 php7.4-cli chromium openbox xinit
 sudo apt install imagemagick php7.4-imagick php7.4-gd xplanet unclutter mingetty x11-xserver-utils
 sudo apt install sqlite3
 ````
-####
+##### Check Apache interface
+On your computer, test if apache is installed, type in firefox the ip's address of your raspberry
 ````
-Test if apache is installed
-on your computer, type in firefox the ip's address of your raspberry
+http://192.168.a.bb
 ````
-http://192.168.1.35
 
 create files in /var/www/html/ teleinfo_puissance.php, ...
 ````
@@ -319,7 +321,7 @@ sudo shutdown -h now
 sudo apt install mariadb-server-10.0
 
 install with curl domoticz/
-http://192.168.1.35:8080/#/Utility
+http://192.168.a.bb:8080/#/Utility
 
 
 
@@ -462,7 +464,7 @@ sudo chown -R pi:www-data /var/www/html/
 sudo chmod -R 770 /var/www/html/
 cp -r Teleinfo/  /var/www/html/
 ````
-http://192.168.1.35/Teleinfo/teleinfo.php
+http://192.168.a.bb/Teleinfo/teleinfo.php
 
 
 ````
@@ -515,7 +517,7 @@ sudo /bin/systemctl start grafana-server
 
 
 Log on graphana @ your computer
-http://192.168.1.35:3000
+http://192.168.a.bb:3000
 
 add the source of information
 Data sources. The data sources page opens showing a list of previously configured data sources for the Grafana instance.
@@ -528,5 +530,3 @@ FileNotFoundError: [Errno 2] No such file or directory: ‘/var/log/teleinfo/rel
 ````
 mkdir /var/log/teleinfo/
 ````
- 
- 
