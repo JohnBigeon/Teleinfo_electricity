@@ -7,8 +7,8 @@ In this repository, three different methods to display informations (and how to 
 
 ## Screenshots
 <p float="center">
-  <img src="https://github.com/JohnBigeon/Teleinfo_electricity/blob/main/Screenshots/Screenshot_php.png" width="400" />
-  <img src="https://github.com/JohnBigeon/Teleinfo_electricity/blob/main/Screenshots/Screenshot_grafana.png" width="400" /> 
+  <img src="https://github.com/JohnBigeon/Teleinfo_electricity/blob/main/Screenshots/screenshot_php.png" width="400" />
+  <img src="https://github.com/JohnBigeon/Teleinfo_electricity/blob/main/Screenshots/screenshot_grafana.png" width="400" /> 
 </p>
 ## Raspberry Pi
 ### Installation
