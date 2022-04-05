@@ -276,6 +276,14 @@ cd teleinfo
 make
 sudo make install
 ````
+To test it
+````
+teleinfo -m test
+````
+And for help
+````
+teleinfo --help
+````
 
 #### Create database
 To create a SQL database:
@@ -371,14 +379,14 @@ On your computer, test if apache is installed, type in firefox the ip's address 
 ````
 http://192.168.a.bb
 ````
-Catch error if needed with
+On your raspberry, catch error if needed with
 ````
 tail -2 /var/log/apache2/error.log 
 ````
 
 ### Fill the database with the data from teleinfo
 First, we need to complete informations of the database where the data will be send as mentioned here [ch2i.eu](https://community.ch2i.eu/topic/44/configuration-mysql)
-In the folder *teleinfo*
+In the folder **teleinfo**, edit *teleinfo.conf*.
 ````
 nano teleinfo.conf
 ````
@@ -394,12 +402,7 @@ mysql_port = 3306
 ````
 sudo cp teleinfo.conf /etc/
 ````
-````
-teleinfo --help
-````
-````
-teleinfo -m test
-````
+
 Send 1 frame on database to check connection
 ````
 teleinfo -m r -q
