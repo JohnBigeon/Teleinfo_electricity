@@ -6,10 +6,18 @@ In this repository, three different methods to display informations (and how to 
 **Special thanks to them**.
 
 ## Screenshots
-<p float="center">
-  <img src="https://github.com/JohnBigeon/Teleinfo_electricity/blob/main/Screenshots/screenshot_php.png" width="400" />
-  <img src="https://github.com/JohnBigeon/Teleinfo_electricity/blob/main/Screenshots/screenshot_grafana.png" width="400" /> 
+
+<p>
+    <img src="https://github.com/JohnBigeon/Teleinfo_electricity/blob/main/Screenshots/screenshot_grafana.png" alt>
+    <em>Using Grafana/InfluxDB repository developed by S. Reuiller [https://github.com/SebastienReuiller/teleinfo-linky-with-raspberry](https://github.com/SebastienReuiller/teleinfo-linky-with-raspberry)</em>
 </p>
+
+<p>
+    <img src="https://github.com/JohnBigeon/Teleinfo_electricity/blob/main/Screenshots/screenshot_php.png" alt>
+    <em>php based on the BmdOnline repository [https://github.com/BmdOnline/Teleinfo](https://github.com/BmdOnline/Teleinfo)</em>
+</p>
+
+
 ## Raspberry Pi
 ### Installation
 First, install Raspberry Pi OS: 
