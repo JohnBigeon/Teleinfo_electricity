@@ -8,11 +8,13 @@ In this repository, three different methods to display informations (and how to 
 ## Screenshots
 
 <p>
+    align="center"
     <img src="https://github.com/JohnBigeon/Teleinfo_electricity/blob/main/Screenshots/screenshot_grafana.png" alt>
     <em>Using Grafana/InfluxDB repository developed by S. Reuiller [https://github.com/SebastienReuiller/teleinfo-linky-with-raspberry](https://github.com/SebastienReuiller/teleinfo-linky-with-raspberry)</em>
 </p>
 
 <p>
+    align="center"
     <img src="https://github.com/JohnBigeon/Teleinfo_electricity/blob/main/Screenshots/screenshot_php.png" alt>
     <em>Based on the BmdOnline repository [https://github.com/BmdOnline/Teleinfo](https://github.com/BmdOnline/Teleinfo)</em>
 </p>
