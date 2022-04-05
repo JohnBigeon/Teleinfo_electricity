@@ -83,8 +83,9 @@ wlo1: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
 ````
 Scan the network
 ````
-sudo nmap 192.168.a.*
+sudo nmap 192.168.*.*
 ````
+You can monitor the progress of scanning, by hitting a key on your keyboard. 
 ````
 Nmap scan report for raspberrypi.home (192.168.a.bb)
 Host is up (0.017s latency).
@@ -92,7 +93,7 @@ Not shown: 999 closed ports
 PORT   STATE SERVICE
 22/tcp open  ssh
 ````
-If the raspberry is connected to the wifi, you should see him with an ip's address: **192.168.a.bb**.
+If the raspberry is connected to the wifi, you should see him with an ip's address: **192.168.a.bb**, where *a* and *b* are numbers.
 Make a ssh to be connected with the raspberry
 ````
 ssh pi@192.168.a.bb
@@ -103,12 +104,9 @@ uname -a
 Linux raspberrypi 5.10.103-v7l+ #1530 SMP Tue Mar 8 13:05:01 GMT 2022 armv7l GNU/Linux
 ````
 
-To shutdown your raspberry
+To shutdown/reboot your raspberry
 ````
 sudo shutdown -h now
-````
-or reboot
-````
 sudo reboot
 ````
 
@@ -151,32 +149,6 @@ Then install GPIO Zero and the pigpio library for Python 3:
 ````
 $ sudo apt install python3-gpiozero python3-pigpio
 ````
-
-### Test first script with LED blinking
-````
-mkdir Scripts
-cd Scripts
-nano blink_LED_v01.py
-````
-````
-from gpiozero import LED
-from time import sleep
-
-red = LED(18)
-
-while True:
-    red.on()
-    sleep(1)
-    red.off()
-    sleep(1)
-````
-
-Execute script
-````
-python3 blink_LED_v01.py
-````
-#### Fritzing
-resistance = 220 Ohms
 
 ## Teleinfo
 ### Check connection with   serial port
