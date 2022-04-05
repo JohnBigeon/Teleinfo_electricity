@@ -218,12 +218,20 @@ ETIQUETTE espace VALEUR espace CHECKSUM
 
 Seules l’ETIQUETTE et la VALEUR nous seront utiles. La CHEKSUM, ou somme de contrôle sert uniquement à vérifier l’intégrité que la trame.
 ````
-
+## Via PHP/SQL client
+Source [here](https://www.journaldulapin.com/2016/02/25/raspberry-pi-teleinfo/).
 ### Libraries required
 ````
 sudo apt update
 sudo apt upgrade
 sudo apt install git-core libmysqlclient-dev libcurl4-openssl-dev
+sudo apt install libmariadb-dev-compat libmariadb-dev mariadb-server
+sudo apt install imagemagick php7.4-imagick php7.4-gd xplanet unclutter mingetty x11-xserver-utils
+sudo apt install sqlite3
+sudo apt install mariadb-server-10.0
+sudo apt-get install postfix
+sudo apt install apache2 php7.4 php7.4-cli chromium openbox xinit
+
 ````
 ````
 git clone https://github.com/hallard/teleinfo/
@@ -231,107 +239,13 @@ cd teleinfo
 make
 sudo make install
 ````
-send 1 frame on database to check connection
-````
-teleinfo -m r -q
-````
-````
-teleinfo 1.0.8 Statistics
-==========================
-Frames Sent         : 0
-Frames checked      : 1
-Frames OK           : 1
-Checksum errors     : 0
-Frame format Errors : 0
-Frame size Errors   : 0
-MySQL init OK       : 1
-MySQL init errors   : 0
-MySQL connect OK    : 1
-MySQL connect errors: 0
-MySQL queries OK    : 1
-MySQL queries errors: 0
-EmonCMS total post  : 0
-EmonCMS post OK     : 0
-EmonCMS post errors : 0
-EmonCMS timeout     : 0
---------------------------
-````
-
-
-
-#### Errors:
-````
-mysql/mysql.h: No such file or directory
-curl/curl.h: No such file or directory
-````
-````
-sudo apt install libmariadb-dev-compat libmariadb-dev mariadb-server
-````
-
-### First try
-We need to complete informations of the database where the data will be send.
-Source: https://community.ch2i.eu/topic/44/configuration-mysql
-
-````
-nano teleinfo.conf
-````
-````
-mysql = 0
-server = localhost
-user = root
-password = bb
-database = bdd_teleinfo
-table = DbiTeleinfo
-mysql_port = 3306
-````
-````
-sudo cp teleinfo.conf /etc/
-````
-````
-teleinfo --help
-````
-````
-teleinfo -m test
-````
-Pour tuer le daemon il suffit de faire la commande 
-````
-killall teleinfo
-````
+Now, we need to create a SQL database
 ### PHP installation
-````
-sudo apt install apache2 php7.4 php7.4-cli chromium openbox xinit
-````
-````
-sudo apt install imagemagick php7.4-imagick php7.4-gd xplanet unclutter mingetty x11-xserver-utils
-sudo apt install sqlite3
-sudo apt install mariadb-server-10.0
-sudo apt-get install postfix
-````
-##### Check Apache interface
-On your computer, test if apache is installed, type in firefox the ip's address of your raspberry
-````
-http://192.168.a.bb
-````
-Catch error if needed with
-````
-tail -2 /var/log/apache2/error.log 
-````
-## Domoticz
-install with curl domoticz/
-````
- curl -sSL install.domoticz.com | sudo bash 
-````
-Just point your browser to the IP address of your Raspberry Pi, and use the port specified during the installation script.
-````
-http://192.168.a.bb:8080/#/Utility
-````
-
 
 ## Create database
 ````
 mysql -u root -p
 ````
-Now, create a database
 ````
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
 Your MariaDB connection id is 229
@@ -415,6 +329,79 @@ http://192.168.a.bb/phpmyadmin
 ````
 the password defined previously will be asked.
 
+##### Check Apache interface
+On your computer, test if apache is installed, type in firefox the ip's address of your raspberry
+````
+http://192.168.a.bb
+````
+Catch error if needed with
+````
+tail -2 /var/log/apache2/error.log 
+````
+We need to complete informations of the database where the data will be send as mentioned here [ch2i.eu](https://community.ch2i.eu/topic/44/configuration-mysql)
+
+````
+nano teleinfo.conf
+````
+````
+mysql = 0
+server = localhost
+user = root
+password = bb
+database = bdd_teleinfo
+table = DbiTeleinfo
+mysql_port = 3306
+````
+````
+sudo cp teleinfo.conf /etc/
+````
+````
+teleinfo --help
+````
+````
+teleinfo -m test
+````
+send 1 frame on database to check connection
+````
+teleinfo -m r -q
+````
+````
+teleinfo 1.0.8 Statistics
+==========================
+Frames Sent         : 0
+Frames checked      : 1
+Frames OK           : 1
+Checksum errors     : 0
+Frame format Errors : 0
+Frame size Errors   : 0
+MySQL init OK       : 1
+MySQL init errors   : 0
+MySQL connect OK    : 1
+MySQL connect errors: 0
+MySQL queries OK    : 1
+MySQL queries errors: 0
+EmonCMS total post  : 0
+EmonCMS post OK     : 0
+EmonCMS post errors : 0
+EmonCMS timeout     : 0
+--------------------------
+````
+Pour tuer le daemon il suffit de faire la commande 
+````
+killall teleinfo
+````
+## Domoticz
+install with curl domoticz/
+````
+ curl -sSL install.domoticz.com | sudo bash 
+````
+Just point your browser to the IP address of your Raspberry Pi, and use the port specified during the installation script.
+````
+http://192.168.a.bb:8080/#/Utility
+````
+
+
+Schedule the monitoring
 ````
 crontab -l
 ````
