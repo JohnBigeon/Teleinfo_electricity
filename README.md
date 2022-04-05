@@ -297,9 +297,9 @@ teleinfo --help
 ````
 
 ### Create database
-To create a SQL database:
+To create a SQL database for #User (update this):
 ````
-mysql -u root -p
+mysql -u #User -p
 ````
 and then complete as:
 ````
@@ -311,7 +311,7 @@ Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
 
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-MariaDB [(none)]> CREATE DATABASE data_test;
+MariaDB [(none)]> CREATE DATABASE dbs_teleinfo;
 Query OK, 1 row affected (0.002 sec)
 
 MariaDB [(none)]> show databases
@@ -319,19 +319,18 @@ MariaDB [(none)]> show databases
 +--------------------+
 | Database           |
 +--------------------+
-| bdd_teleinfo       |
-| data_test          |
+| dbs_teleinfo       |
 | information_schema |
 | mysql              |
 | performance_schema |
 +--------------------+
 5 rows in set (0.001 sec)
 
-MariaDB [(none)]> USE bdd_teleinfo;
+MariaDB [(none)]> USE dbs_teleinfo;
 Database changed
-MariaDB [bdd_teleinfo]> CREATE TABLE Dbb;
+MariaDB [dbs_teleinfo]> CREATE TABLE tbl_teleinfo;
 ERROR 1113 (42000): A table must have at least 1 column
-MariaDB [bdd_teleinfo]> CREATE TABLE Dbb(
+MariaDB [dbs_teleinfo]> CREATE TABLE tbl_teleinfo(
     ->   id int(11) NOT NULL AUTO_INCREMENT,
     ->   DATE datetime DEFAULT NULL,
     ->   ADCO varchar(12) DEFAULT NULL,
@@ -368,7 +367,7 @@ MariaDB [bdd_teleinfo]> CREATE TABLE Dbb(
     -> ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 Query OK, 0 rows affected (0.015 sec)
 
-MariaDB [bdd_teleinfo]> exit
+MariaDB [dbs_teleinfo]> exit
 Bye
 ````
 
@@ -377,13 +376,13 @@ via phpMyAdmin:
 ````
 sudo apt install phpmyadmin
 ````
-Warning: When the prompt appears, “apache2” is highlighted, but not selected. If you do not hit SPACE to select Apache, the installer will not move the necessary files during installation. Hit SPACE, TAB, and then ENTER to select Apache. Define a password.
+Warning: When the prompt appears, “apache2” is highlighted, but not selected. If you do not hit SPACE to select Apache, the installer will not move the necessary files during installation. Hit SPACE, TAB, and then ENTER to select Apache. Define a password #Password.
 
 On your laptop:
 ````
 http://192.168.a.bb/phpmyadmin
 ````
-the password defined previously will be asked.
+the password #Password defined previously will be asked.
 
 ##### Check Apache interface
 On your computer, test if apache is installed, type in firefox the ip's address of your raspberry:
@@ -396,7 +395,7 @@ tail -2 /var/log/apache2/error.log
 ````
 
 ### Fill the database with the data from teleinfo
-First, we need to complete informations of the database where the data will be send as mentioned here [ch2i.eu](https://community.ch2i.eu/topic/44/configuration-mysql).
+First, we need to complete informations of the database where the data will be send as mentioned here [ch2i.eu](https://community.ch2i.eu/topic/44/configuration-mysql). Don't forget to update #User and #Password.
 In the folder **teleinfo**, edit/update *teleinfo.conf*.
 ````
 nano teleinfo.conf
@@ -404,16 +403,15 @@ nano teleinfo.conf
 ````
 mysql = 0
 server = localhost
-user = root
-password = bb
-database = bdd_teleinfo
-table = DbiTeleinfo
+user = #User
+password = #Password
+database = dbs_teleinfo
+table = tbl_teleinfo
 mysql_port = 3306
 ````
 ````
 sudo cp teleinfo.conf /etc/
 ````
-
 Send 1 frame on database to check connection:
 ````
 teleinfo -m r -q
@@ -453,10 +451,10 @@ Update the *config.php*, specially about the MySQL database:
 /***********************/
 $db_connect = array (
     "serveur" => "localhost",
-    "base"    => "teleinfo",
-    "table"   => "tbTeleinfo",
-    "login"   => "teleinfo",
-    "pass"    => "teleinfo"
+    "base"    => "dbs_teleinfo",
+    "table"   => "tbl_teleinfo",
+    "login"   => "#User",
+    "pass"    => "#Password"
 );
 ````
 copy all the folder in **var/www/html/**.
