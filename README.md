@@ -153,6 +153,8 @@ To display the GPIO header diagram
 pinout
 ````
 ![Screenshot](https://github.com/JohnBigeon/Teleinfo_electricity/blob/main/Screenshots/screenshot_pinout.png)
+
+In our case
 ```
 PiTInfo - Raspberry
 ------    -------  
