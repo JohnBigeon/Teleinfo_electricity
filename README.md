@@ -99,6 +99,7 @@ Scan the network
 sudo nmap 192.168.*.*
 ````
 You can monitor the progress of scanning, by hitting a key on your keyboard. 
+Finally, you should see your raspberry in the list.
 ````
 Nmap scan report for raspberrypi.home (192.168.a.bb)
 Host is up (0.017s latency).
