@@ -327,11 +327,11 @@ MariaDB [(none)]> show databases
 +--------------------+
 5 rows in set (0.001 sec)
 
-MariaDB [(none)]> USE data_test;
+MariaDB [(none)]> USE bdd_teleinfo;
 Database changed
-MariaDB [data_test]> CREATE TABLE Dbb;
+MariaDB [bdd_teleinfo]> CREATE TABLE Dbb;
 ERROR 1113 (42000): A table must have at least 1 column
-MariaDB [data_test]> CREATE TABLE Dbb(
+MariaDB [bdd_teleinfo]> CREATE TABLE Dbb(
     ->   id int(11) NOT NULL AUTO_INCREMENT,
     ->   DATE datetime DEFAULT NULL,
     ->   ADCO varchar(12) DEFAULT NULL,
@@ -368,7 +368,7 @@ MariaDB [data_test]> CREATE TABLE Dbb(
     -> ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 Query OK, 0 rows affected (0.015 sec)
 
-MariaDB [data_test]> exit
+MariaDB [bdd_teleinfo]> exit
 Bye
 ````
 
