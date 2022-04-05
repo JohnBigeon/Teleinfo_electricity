@@ -14,7 +14,7 @@ In this repository, three different methods to display informations (and how to 
 
 <p>
     <img src="https://github.com/JohnBigeon/Teleinfo_electricity/blob/main/Screenshots/screenshot_php.png" alt>
-    <em>php based on the BmdOnline repository [https://github.com/BmdOnline/Teleinfo](https://github.com/BmdOnline/Teleinfo)</em>
+    <em>Based on the BmdOnline repository [https://github.com/BmdOnline/Teleinfo](https://github.com/BmdOnline/Teleinfo)</em>
 </p>
 
 
