@@ -466,11 +466,11 @@ See cron job
 ````
 crontab -l
 ````
-add to cron
+Then, with
 ````
 crontabl -e
 ````
-Add
+Add the task (*/5 = every 5 minutes)
 ````
 */5 * * * * sudo teleinfo -m r -q
 ````
@@ -555,36 +555,24 @@ Now check the influxdb
  PTEC,host=raspberry,region=linky
  ````
  
+### add the data source
+
+Click Add data source 'InfluxDB'
 
 ### Display
 Log on graphana on your computer
 ````
 http://192.168.a.bb:3000
 ````
-During the first connection, the login/password are *admin* and *admin*.
-You should see something like that here.
-
-### add the data source
-
-Click Add data source 'InfluxDB'
-
+During the first connection, the login/password are *admin* and *admin*. Possibly, an error occurred 
 ````
 FileNotFoundError: [Errno 2] No such file or directory: ‘/var/log/teleinfo/releve.log’
 ````
+In this case, simply create a folder *teleinfo*.
 ````
 mkdir /var/log/teleinfo/
 ````
  
 #### Job scheduler with cron
-See cron job
-````
-crontab -l
-````
-add to cron
-````
-crontabl -e
-````
-````
-* * * * * python3 XXX
-````
+TODO
 
