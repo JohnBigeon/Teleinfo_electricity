@@ -21,8 +21,8 @@ In this repository, three different methods to display informations (and how to 
 ## Raspberry Pi
 ### Installation
 First, install Raspberry Pi OS: 
-#### With graphical interface
-With rpi-imager
+#### Graphical interface
+Rpi-imager
 ```
 sudo apt install snapd
 sudo snap install rpi-imager
