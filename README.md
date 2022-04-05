@@ -22,7 +22,7 @@ In this repository, three different methods to display informations (and how to 
 ### Installation
 First, install Raspberry Pi OS: 
 #### Graphical interface
-Rpi-imager
+With rpi-imager:
 ```
 sudo apt install snapd
 sudo snap install rpi-imager
@@ -30,16 +30,16 @@ rpi-imager
 ```
 
 #### Terminal
-With terminal
+With terminal:
 ````
 wget https://downloads.raspberrypi.org/raspios_armhf/images/raspios_armhf-2022-01-28/2022-01-28-raspios-bullseye-armhf.zip
 unzip raspios_armhf-2022-01-28/2022-01-28-raspios-bullseye-armhf.zip
 ````
-unmount SD card 
+unmount SD card:
 ```
 sudo umount /dev/mmcblk0
 ```
-Locate the right device 
+Locate the right device:
 ```
 sudo fdisk -l
 ```
@@ -63,7 +63,7 @@ touch ssh
 
 #### Connect the Raspberry pi to the Wifi
 
-In boot directory, create a new file called wpa_supplicant.conf, which will hold the necessary credentials required to connect to the WIFI network. Open a new file (wpa_supplicant.conf) with your text editor and paste the contents below.
+In boot directory, create a new file called wpa_supplicant.conf, which will hold the necessary credentials required to connect to the WIFI network. Open a new file (wpa_supplicant.conf) with your text editor and paste the contents below. Don't forget to change *#Box_name* and *#Password*.
 
 ```
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
@@ -86,15 +86,15 @@ ssh pi@raspberrypi.local
 ````
 
 #### Connect your laptop to the Raspberry pi via router
-On your computer:
+To interact with our network device, we need to find  your Pi's IP address with:
 ````
 ifconfig
 ````
 ````
 wlo1: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
-        inet 192.168.a.xx  netmask 255.255.255.0  broadcast 192.168.1.255
+        inet 192.168.a.bb  netmask 255.255.255.0  broadcast 192.168.a.bb
 ````
-Scan the network
+Or, from your laptop, scan the network:
 ````
 sudo nmap 192.168.*.*
 ````
