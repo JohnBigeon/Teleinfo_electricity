@@ -210,7 +210,9 @@ initstring     : none
 exit_after is  : not set
 exit is        : no
 ````
-Or read data with the *cat* command.
+To quit picocom, *CTRL+A* and *CTRL+Q*.
+
+You can also read data with the *cat* command.
 ````
 sudo cat /dev/ttyS0
 ````
@@ -432,9 +434,10 @@ EmonCMS post errors : 0
 EmonCMS timeout     : 0
 --------------------------
 ````
-
+### PHP Script
+Add *teleinfo_func.php*, *teleinfo_puissance.php*, *teleinfo_conso.php*, *teleinfo_graph.php* in /var/www/html
 #### Job scheduler with cron
-Now, we will schedule a PHP script every *X* times to collect data from teleinfo
+Now, we will schedule a PHP script every *X* times to collect data from teleinfo.
 See cron job
 ````
 crontab -l
@@ -564,10 +567,6 @@ add to cron
 crontabl -e
 ````
 ````
-* * * * * /usr/bin/php /var/www/html/teleinfo_puissance.php
-* * * * * /usr/bin/php /var/www/html/teleinfo_conso.php
+* * * * * python3 XXX
 ````
-check cron excecution
-````
-grep CRON /var/log/syslog
-````
+
