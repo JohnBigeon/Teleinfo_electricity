@@ -280,6 +280,10 @@ To test it
 ````
 teleinfo -m test
 ````
+To kill the daemon if needed
+````
+killall teleinfo
+````
 And for help
 ````
 teleinfo --help
@@ -428,11 +432,9 @@ EmonCMS post errors : 0
 EmonCMS timeout     : 0
 --------------------------
 ````
-Pour tuer le daemon il suffit de faire la commande 
-````
-killall teleinfo
-````
- #### Job scheduler with cron
+
+#### Job scheduler with cron
+Now, we will schedule a PHP script every *X* times to collect data from teleinfo
 See cron job
 ````
 crontab -l
@@ -450,13 +452,7 @@ check cron excecution
 grep CRON /var/log/syslog
 ````
 ````
-crontab -l
-````
-````
 */ * * * * sudo teleinfo -m r -q
-````
-````
-crontab -e
 ````
 ````
 cp -r Teleinfo/  /var/www/html/
@@ -466,27 +462,6 @@ cp -r Teleinfo/  /var/www/html/
 ````
 http://192.168.a.bb/Teleinfo/teleinfo.php
 
-
-````
-perl: warning: Please check that your locale settings:
-        LANGUAGE = (unset),
-        LC_ALL = (unset),
-        LC_TIME = "fr_FR.UTF-8",
-        LC_MONETARY = "fr_FR.UTF-8",
-        LC_ADDRESS = "fr_FR.UTF-8",
-        LC_TELEPHONE = "fr_FR.UTF-8",
-        LC_NAME = "fr_FR.UTF-8",
-        LC_MEASUREMENT = "fr_FR.UTF-8",
-        LC_IDENTIFICATION = "fr_FR.UTF-8",
-        LC_NUMERIC = "fr_FR.UTF-8",
-        LC_PAPER = "fr_FR.UTF-8",
-        LANG = "en_GB.UTF-8"
-    are supported and installed on your system.
-perl: warning: Falling back to a fallback locale ("en_GB.UTF-8").
-````
-````
-sudo locale-gen
-````
 ## Option 2: via Domoticz
 install with curl domoticz/
 ````
