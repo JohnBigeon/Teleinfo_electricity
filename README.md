@@ -95,7 +95,7 @@ ifconfig
 ````
 ````
 wlo1: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
-        inet 192.168.a.bb  netmask 255.255.255.0  broadcast 192.168.a.bb
+        inet 192.168.a.bb  netmask XXX.XXX.XXX.X  broadcast 192.168.a.bb
 ````
 Or, from your laptop, scan the network:
 ````
