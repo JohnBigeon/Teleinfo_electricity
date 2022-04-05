@@ -269,12 +269,10 @@ sudo apt update
 sudo apt upgrade
 sudo apt install git-core libmysqlclient-dev libcurl4-openssl-dev
 sudo apt install libmariadb-dev-compat libmariadb-dev mariadb-server
-sudo apt install imagemagick php7.4-imagick php7.4-gd xplanet unclutter mingetty x11-xserver-utils
+sudo apt install imagemagick php7.4 php7.4-cli php7.4-imagick php7.4-gd xplanet unclutter mingetty x11-xserver-utils
+sudo apt install apache2 openbox xinit
 sudo apt install sqlite3
-sudo apt install mariadb-server-10.0
 sudo apt-get install postfix
-sudo apt install apache2 php7.4 php7.4-cli chromium openbox xinit
-
 ````
 Clone the repository of C. Hallard with:
 ````
