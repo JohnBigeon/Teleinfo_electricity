@@ -392,7 +392,7 @@ tail -2 /var/log/apache2/error.log
 ````
 
 ### Fill the database with the data from teleinfo
-First, we need to complete informations of the database where the data will be send as mentioned here [ch2i.eu](https://community.ch2i.eu/topic/44/configuration-mysql)
+First, we need to complete informations of the database where the data will be send as mentioned here [ch2i.eu](https://community.ch2i.eu/topic/44/configuration-mysql).
 In the folder **teleinfo**, edit *teleinfo.conf*.
 ````
 nano teleinfo.conf
@@ -436,7 +436,31 @@ EmonCMS timeout     : 0
 --------------------------
 ````
 ### PHP Script
-Add *teleinfo_func.php*, *teleinfo_puissance.php*, *teleinfo_conso.php*, *teleinfo_graph.php* in /var/www/html
+Clone the repositories
+````
+git clone https://github.com/BmdOnline/Teleinfo.git
+
+````
+Update the *config.php*, specially about the MySQL database
+````
+/***********************/
+/*    Données MySQL    */
+/***********************/
+$db_connect = array (
+    "serveur" => "localhost",
+    "base"    => "teleinfo",
+    "table"   => "tbTeleinfo",
+    "login"   => "teleinfo",
+    "pass"    => "teleinfo"
+);
+````
+copy all the folder in **var/www/htmm/**.
+````
+cp -r Teleinfo/  /var/www/html/
+sudo chown -R pi:www-data /var/www/html/
+sudo chmod -R 770 /var/www/html/
+````
+
 #### Job scheduler with cron
 Now, we will schedule a PHP script every *X* times to collect data from teleinfo.
 See cron job
@@ -458,12 +482,7 @@ grep CRON /var/log/syslog
 ````
 */ * * * * sudo teleinfo -m r -q
 ````
-````
-cp -r Teleinfo/  /var/www/html/
-sudo chown -R pi:www-data /var/www/html/
-sudo chmod -R 770 /var/www/html/
-cp -r Teleinfo/  /var/www/html/
-````
+
 http://192.168.a.bb/Teleinfo/teleinfo.php
 
 ## Option 2: via Domoticz
