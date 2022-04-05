@@ -5,6 +5,11 @@ Monitor your home's power consumption with a Raspberry Pi. The Raspberry Pi shie
 In this repository, three different methods to display informations (and how to install them) are summarized : via php based on the BmdOnline repository [https://github.com/BmdOnline/Teleinfo](https://github.com/BmdOnline/Teleinfo), via Domoticz package and finnaly via Grafana/InfluxDB repository developed by S. Reuiller [https://github.com/SebastienReuiller/teleinfo-linky-with-raspberry](https://github.com/SebastienReuiller/teleinfo-linky-with-raspberry) and [https://sebastienreuiller.fr/blog/monitorer-son-compteur-linky-avec-grafana-cest-possible-et-ca-tourne-sur-un-raspberry-pi](https://sebastienreuiller.fr/blog/monitorer-son-compteur-linky-avec-grafana-cest-possible-et-ca-tourne-sur-un-raspberry-pi).
 **Special thanks to them**.
 
+## Screenshots
+<p float="center">
+  <img src="https://github.com/JohnBigeon/Teleinfo_electricity/blob/main/Screenshots/Screenshot_php.png" width="400" />
+  <img src="https://github.com/JohnBigeon/Teleinfo_electricity/blob/main/Screenshots/Screenshot_grafana.png" width="400" /> 
+</p>
 ## Raspberry Pi
 ### Installation
 First, install Raspberry Pi OS: 
