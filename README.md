@@ -439,7 +439,6 @@ EmonCMS timeout     : 0
 Clone the repositories
 ````
 git clone https://github.com/BmdOnline/Teleinfo.git
-
 ````
 Update the *config.php*, specially about the MySQL database
 ````
@@ -454,7 +453,7 @@ $db_connect = array (
     "pass"    => "teleinfo"
 );
 ````
-copy all the folder in **var/www/htmm/**.
+copy all the folder in **var/www/html/**.
 ````
 cp -r Teleinfo/  /var/www/html/
 sudo chown -R pi:www-data /var/www/html/
@@ -462,7 +461,7 @@ sudo chmod -R 770 /var/www/html/
 ````
 
 #### Job scheduler with cron
-Now, we will schedule a PHP script every *X* times to collect data from teleinfo.
+Now, we will schedule the *teleinfo* script every *X* times to fill the database.
 See cron job
 ````
 crontab -l
@@ -471,19 +470,18 @@ add to cron
 ````
 crontabl -e
 ````
+Add
 ````
-* * * * * /usr/bin/php /var/www/html/teleinfo_puissance.php
-* * * * * /usr/bin/php /var/www/html/teleinfo_conso.php
+*/5 * * * * sudo teleinfo -m r -q
 ````
 check cron excecution
 ````
 grep CRON /var/log/syslog
 ````
+On your laptop, visit
 ````
-*/ * * * * sudo teleinfo -m r -q
-````
-
 http://192.168.a.bb/Teleinfo/teleinfo.php
+````
 
 ## Option 2: via Domoticz
 install with curl domoticz/
