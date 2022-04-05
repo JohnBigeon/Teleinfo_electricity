@@ -143,7 +143,11 @@ console=serial0,115200
 
 ## Teleinfo
 ### Hardware connection
-![Screenshot](https://cdn.tindiemedia.com/images/resize/lP5O88M3qMH3eB8mJO_J1EustE8=/p/full-fit-in/891x668/i/5857/products/2020-07-23T18%3A23%3A11.467Z-IMG_7296..jpeg?1606306133)
+<p>
+    <img src="https://cdn.tindiemedia.com/images/resize/lP5O88M3qMH3eB8mJO_J1EustE8=/p/full-fit-in/891x668/i/5857/products/2020-07-23T18%3A23%3A11.467Z-IMG_7296..jpeg?1606306133" alt>
+    <em>[https://www.tindie.com/products/hallard/pitinfo/](https://www.tindie.com/products/hallard/pitinfo/)</em>
+</p>
+
 To display the GPIO header diagram
 ````
 pinout
