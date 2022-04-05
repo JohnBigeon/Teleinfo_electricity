@@ -108,17 +108,17 @@ PORT   STATE SERVICE
 22/tcp open  ssh
 ````
 If the raspberry is connected to the wifi, you should see him with an ip's address: **192.168.a.bb**, where *a* and *b* are numbers.
-Make a ssh to be connected with the raspberry
+Make a ssh to be connected with the raspberry:
 ````
 ssh pi@192.168.a.bb
 ````
-Check the distribution you have
+Check the distribution you have:
 ````
 uname -a
 Linux raspberrypi 5.10.103-v7l+ #1530 SMP Tue Mar 8 13:05:01 GMT 2022 armv7l GNU/Linux
 ````
 
-To shutdown/reboot your raspberry
+To shutdown/reboot your raspberry:
 ````
 sudo shutdown -h now
 sudo reboot
@@ -131,7 +131,7 @@ sudo raspi-config
 ````
 Go to "Interfacing Options/Remote GPIO", choose "Yes" and then activate serial port.
 
-Be sure, the remote GPIO feature is already installed
+Be sure, the remote GPIO feature is already installed:
 ````
 sudo apt install pigpio
 ````
@@ -162,13 +162,13 @@ console=serial0,115200
     <em>https://www.tindie.com/products/hallard/pitinfo/</em>
 </p>
 
-To display the GPIO header diagram
+To display the GPIO header diagram:
 ````
 pinout
 ````
 ![Screenshot](https://github.com/JohnBigeon/Teleinfo_electricity/blob/main/Screenshots/screenshot_pinout.png)
 
-In our case
+In our case:
 ```
 PiTInfo - Raspberry
 ------    -------  
@@ -181,7 +181,7 @@ PiTInfo - Raspberry
 
 
 ### Check connection with serial port
-Use the command *picocom* to test the connection with *PiTInfo*.
+Use the command *picocom* to test the connection with *PiTInfo*:
 ````
 picocom -b 1200 -d 7 -p e -f n /dev/ttyS0
 ````
@@ -279,15 +279,15 @@ cd teleinfo
 make
 sudo make install
 ````
-To test it
+To test it:
 ````
 teleinfo -m test
 ````
-To kill the daemon if needed
+To kill the daemon if needed:
 ````
 killall teleinfo
 ````
-And for help
+And for help:
 ````
 teleinfo --help
 ````
@@ -369,24 +369,24 @@ Bye
 ````
 
 #### Check the database
-via phpMyAdmin
+via phpMyAdmin:
 ````
 sudo apt install phpmyadmin
 ````
 Warning: When the prompt appears, “apache2” is highlighted, but not selected. If you do not hit SPACE to select Apache, the installer will not move the necessary files during installation. Hit SPACE, TAB, and then ENTER to select Apache. Define a password.
 
-On your laptop
+On your laptop:
 ````
 http://192.168.a.bb/phpmyadmin
 ````
 the password defined previously will be asked.
 
 ##### Check Apache interface
-On your computer, test if apache is installed, type in firefox the ip's address of your raspberry
+On your computer, test if apache is installed, type in firefox the ip's address of your raspberry:
 ````
 http://192.168.a.bb
 ````
-On your raspberry, catch error if needed with
+On your raspberry, catch error if needed with:
 ````
 tail -2 /var/log/apache2/error.log 
 ````
@@ -410,7 +410,7 @@ mysql_port = 3306
 sudo cp teleinfo.conf /etc/
 ````
 
-Send 1 frame on database to check connection
+Send 1 frame on database to check connection:
 ````
 teleinfo -m r -q
 ````
@@ -440,7 +440,7 @@ Clone the repositories
 ````
 git clone https://github.com/BmdOnline/Teleinfo.git
 ````
-Update the *config.php*, specially about the MySQL database
+Update the *config.php*, specially about the MySQL database:
 ````
 /***********************/
 /*    Données MySQL    */
@@ -462,23 +462,23 @@ sudo chmod -R 770 /var/www/html/
 
 #### Job scheduler with cron
 Now, we will schedule the *teleinfo* script every *X* times to fill the database.
-See cron job
+See cron job:
 ````
 crontab -l
 ````
-Then, with
+Then, with:
 ````
 crontabl -e
 ````
-Add the task (*/5 = every 5 minutes)
+Add the task (*/5 = every 5 minutes):
 ````
 */5 * * * * sudo teleinfo -m r -q
 ````
-check cron excecution
+check cron excecution:
 ````
 grep CRON /var/log/syslog
 ````
-On your laptop, visit
+On your laptop, visit:
 ````
 http://192.168.a.bb/Teleinfo/teleinfo.php
 ````
@@ -527,7 +527,7 @@ Try it:
 python3 teleinfo.py
 ````
 After few minutes, stop the script. 
-Now check the influxdb
+Now check the influxdb:
 ````
  pi@raspberrypi:~ $ influx
  Connected to http://localhost:8086 version 1.7.9
@@ -557,10 +557,10 @@ Now check the influxdb
  
 ### add the data source
 
-Click Add data source 'InfluxDB'
+Click Add data source 'InfluxDB'.
 
 ### Display
-Log on graphana on your computer
+Log on graphana on your computer:
 ````
 http://192.168.a.bb:3000
 ````
