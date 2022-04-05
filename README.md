@@ -255,8 +255,8 @@ ETIQUETTE espace VALEUR espace CHECKSUM
 
 Seules l’ETIQUETTE et la VALEUR nous seront utiles. La CHEKSUM, ou somme de contrôle sert uniquement à vérifier l’intégrité que la trame.
 ````
-## Via PHP/SQL client
-Source [here](https://www.journaldulapin.com/2016/02/25/raspberry-pi-teleinfo/).
+## Option 1: via PHP/SQL client
+Source [https://www.journaldulapin.com/2016/02/25/raspberry-pi-teleinfo/](https://www.journaldulapin.com/2016/02/25/raspberry-pi-teleinfo/).
 ### Libraries required
 ````
 sudo apt update
@@ -276,13 +276,13 @@ cd teleinfo
 make
 sudo make install
 ````
-Now, we need to create a SQL database
-### PHP installation
 
-## Create database
+#### Create database
+To create a SQL database:
 ````
 mysql -u root -p
 ````
+and then complete as:
 ````
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
 Your MariaDB connection id is 229
@@ -353,7 +353,7 @@ MariaDB [data_test]> exit
 Bye
 ````
 
-### Check the database
+#### Check the database
 via phpMyAdmin
 ````
 sudo apt install phpmyadmin
@@ -375,8 +375,10 @@ Catch error if needed with
 ````
 tail -2 /var/log/apache2/error.log 
 ````
-We need to complete informations of the database where the data will be send as mentioned here [ch2i.eu](https://community.ch2i.eu/topic/44/configuration-mysql)
 
+### Fill the database with the data from teleinfo
+First, we need to complete informations of the database where the data will be send as mentioned here [ch2i.eu](https://community.ch2i.eu/topic/44/configuration-mysql)
+In the folder *teleinfo*
 ````
 nano teleinfo.conf
 ````
@@ -398,7 +400,7 @@ teleinfo --help
 ````
 teleinfo -m test
 ````
-send 1 frame on database to check connection
+Send 1 frame on database to check connection
 ````
 teleinfo -m r -q
 ````
@@ -427,18 +429,23 @@ Pour tuer le daemon il suffit de faire la commande
 ````
 killall teleinfo
 ````
-## Domoticz
-install with curl domoticz/
+ #### Job scheduler with cron
+See cron job
 ````
- curl -sSL install.domoticz.com | sudo bash 
+crontab -l
 ````
-Just point your browser to the IP address of your Raspberry Pi, and use the port specified during the installation script.
+add to cron
 ````
-http://192.168.a.bb:8080/#/Utility
+crontabl -e
 ````
-
-
-Schedule the monitoring
+````
+* * * * * /usr/bin/php /var/www/html/teleinfo_puissance.php
+* * * * * /usr/bin/php /var/www/html/teleinfo_conso.php
+````
+check cron excecution
+````
+grep CRON /var/log/syslog
+````
 ````
 crontab -l
 ````
@@ -477,8 +484,17 @@ perl: warning: Falling back to a fallback locale ("en_GB.UTF-8").
 ````
 sudo locale-gen
 ````
+## Option 2: via Domoticz
+install with curl domoticz/
+````
+ curl -sSL install.domoticz.com | sudo bash 
+````
+Just point your browser to the IP address of your Raspberry Pi, and use the port specified during the installation script.
+````
+http://192.168.a.bb:8080/#/Utility
+````
 
-## Grafana
+## Option 3: Grafana
 ### Install Grafana
 Source: https://grafana.com/tutorials/install-grafana-on-raspberry-pi/
 Add the APT key used to authenticate packages:
@@ -560,7 +576,7 @@ FileNotFoundError: [Errno 2] No such file or directory: ‘/var/log/teleinfo/rel
 mkdir /var/log/teleinfo/
 ````
  
- #### Job scheduler with cron
+#### Job scheduler with cron
 See cron job
 ````
 crontab -l
