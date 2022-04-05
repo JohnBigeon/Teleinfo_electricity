@@ -110,13 +110,12 @@ sudo shutdown -h now
 sudo reboot
 ````
 
-#### Enable remote access to GPIO pins
+#### Enable remote access to GPIO pins/serial port
 Execute the command:
 ````
 sudo raspi-config
 ````
-Go to "Interfacing Options/Remote GPIO"
-Choose "Yes"
+Go to "Interfacing Options/Remote GPIO", choose "Yes" and then activate serial port.
 
 Be sure, the remote GPIO feature is already installed
 ````
@@ -132,10 +131,6 @@ To run the daemon once using systemctl, run:
 ````
 sudo systemctl start pigpiod
 ````
-#### Activate serial port
-````
-sudo raspi-config
-````
 #### Activate uart
 In the folder /boot/cmdline.txt, add at the end: 
 ````
@@ -145,15 +140,15 @@ delete
 ````
 console=serial0,115200
 ````
-Then install GPIO Zero and the pigpio library for Python 3:
-````
-$ sudo apt install python3-gpiozero python3-pigpio
-````
 
 ## Teleinfo
-### Check connection with   serial port
+### Check connection with serial port
+Use the command *picocom* to test the connection with *PiTInfo*.
 ````
 picocom -b 1200 -d 7 -p e -f n /dev/ttyS0
+````
+You should see:
+````
 picocom v3.1
 
 port is        : /dev/ttyS0
@@ -178,6 +173,7 @@ initstring     : none
 exit_after is  : not set
 exit is        : no
 ````
+Or read data with the *cat* command.
 ````
 sudo cat /dev/ttyS0
 ````
