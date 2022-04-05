@@ -61,7 +61,7 @@ Navigate on your SD card to the /boot/directory and add a empty file with:
 touch ssh
 ````
 
-#### Connect the Raspberry pi to the Wifi
+### Connect the Raspberry pi to the Wifi
 
 In boot directory, create a new file called wpa_supplicant.conf, which will hold the necessary credentials required to connect to the WIFI network. Open a new file (wpa_supplicant.conf) with your text editor and paste the contents below. Don't forget to change *#Box_name* and *#Password*.
 
@@ -125,7 +125,7 @@ sudo shutdown -h now
 sudo reboot
 ````
 
-#### Enable remote access to GPIO pins/serial port
+### Enable remote access to GPIO pins/serial port
 Execute the command:
 ````
 sudo raspi-config
@@ -146,7 +146,7 @@ To run the daemon once using systemctl, run:
 ````
 sudo systemctl start pigpiod
 ````
-#### Activate uart
+### Activate uart
 In the folder /boot/cmdline.txt, add at the end: 
 ````
 enable_uart=1
@@ -293,7 +293,7 @@ And for help:
 teleinfo --help
 ````
 
-#### Create database
+### Create database
 To create a SQL database:
 ````
 mysql -u root -p
@@ -394,7 +394,7 @@ tail -2 /var/log/apache2/error.log
 
 ### Fill the database with the data from teleinfo
 First, we need to complete informations of the database where the data will be send as mentioned here [ch2i.eu](https://community.ch2i.eu/topic/44/configuration-mysql).
-In the folder **teleinfo**, edit *teleinfo.conf*.
+In the folder **teleinfo**, edit/update *teleinfo.conf*.
 ````
 nano teleinfo.conf
 ````
@@ -436,6 +436,8 @@ EmonCMS post errors : 0
 EmonCMS timeout     : 0
 --------------------------
 ````
+No errors are reported with MySQL in this case.
+
 ### PHP Script
 Clone the repositories
 ````
@@ -475,7 +477,7 @@ Add the task (*/5 = every 5 minutes):
 ````
 */5 * * * * sudo teleinfo -m r -q
 ````
-check cron excecution:
+Check cron excecution:
 ````
 grep CRON /var/log/syslog
 ````
@@ -485,7 +487,7 @@ http://192.168.a.bb/Teleinfo/teleinfo.php
 ````
 
 ## Option 2: via Domoticz
-install with curl domoticz/
+Install with domoticz:
 ````
  curl -sSL install.domoticz.com | sudo bash 
 ````
@@ -555,11 +557,6 @@ Now check the influxdb:
  PAPP,host=raspberry,region=linky
  PTEC,host=raspberry,region=linky
  ````
- 
-### add the data source
-
-Click Add data source 'InfluxDB'.
-
 ### Display
 Log on graphana on your computer:
 ````
@@ -573,7 +570,9 @@ In this case, simply create a folder *teleinfo*.
 ````
 mkdir /var/log/teleinfo/
 ````
- 
-#### Job scheduler with cron
+### Add the data source
+Click Add data source 'InfluxDB'.
+
+### Job scheduler with cron
 TODO
 
