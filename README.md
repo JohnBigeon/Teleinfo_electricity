@@ -58,14 +58,14 @@ sudo dd bs=1M if=2022-01-28-raspios-bullseye-armhf.img of=/dev/mmcblk0 status=pr
 
 ### Enable remote access
 #### SSH
-Navigate on your SD card to the /boot/directory and add a empty file with:
+Navigate on your SD card to the **/boot** directory and add a empty file with:
 ````
 touch ssh
 ````
 
 ### Connect the Raspberry pi to the Wifi
 
-In boot directory, create a new file called wpa_supplicant.conf, which will hold the necessary credentials required to connect to the WIFI network. Open a new file (wpa_supplicant.conf) with your text editor and paste the contents below. Don't forget to change *#Box_name* and *#Password*.
+In **boot** directory, create a new file called wpa_supplicant.conf, which will hold the necessary credentials required to connect to the WIFI network. Open a new file (wpa_supplicant.conf) with your text editor and paste the contents below. Don't forget to change *#Box_name* and *#Password*.
 
 ```
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
