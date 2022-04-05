@@ -276,6 +276,7 @@ sudo apt-get install postfix
 sudo apt install apache2 php7.4 php7.4-cli chromium openbox xinit
 
 ````
+Clone the repository of C. Hallard with:
 ````
 git clone https://github.com/hallard/teleinfo/
 cd teleinfo
