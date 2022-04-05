@@ -142,6 +142,24 @@ console=serial0,115200
 ````
 
 ## Teleinfo
+### Hardware connection
+![Screenshot](https://cdn.tindiemedia.com/images/resize/lP5O88M3qMH3eB8mJO_J1EustE8=/p/full-fit-in/891x668/i/5857/products/2020-07-23T18%3A23%3A11.467Z-IMG_7296..jpeg?1606306133)
+To display the GPIO header diagram
+````
+pinout
+````
+![Screenshot](https://github.com/JohnBigeon/Teleinfo_electricity/blob/main/Screenshots/screenshot_pinout.png)
+```
+PiTInfo - Raspberry
+------    -------  
+    VCC - (1) 3V3
+    LED - (7) GPIO4
+    GND - (9) GND
+    GND - (6) GND
+    TXD - (10) GPIO15
+```
+
+
 ### Check connection with serial port
 Use the command *picocom* to test the connection with *PiTInfo*.
 ````
