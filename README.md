@@ -77,7 +77,8 @@ network={
 }
 ````
 
-#### Connect your laptop to the Raspberry pi via ethernet cable
+### Connect your laptop to the Raspberry pi via ethernet cable/router
+#### Option 1
 ````
 ping raspberrypi.local
 ````
@@ -85,7 +86,7 @@ ping raspberrypi.local
 ssh pi@raspberrypi.local
 ````
 
-#### Connect your laptop to the Raspberry pi via router
+#### Option 2
 To interact with our network device, we need to find  your Pi's IP address with:
 ````
 ifconfig
