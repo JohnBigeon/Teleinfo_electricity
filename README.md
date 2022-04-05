@@ -23,11 +23,10 @@ wget https://downloads.raspberrypi.org/raspios_armhf/images/raspios_armhf-2022-0
 unzip raspios_armhf-2022-01-28/2022-01-28-raspios-bullseye-armhf.zip
 ````
 unmount SD card 
-Now you have to unmount the device:
 ```
 sudo umount /dev/mmcblk0
 ```
-Check 
+Locate the right device 
 ```
 sudo fdisk -l
 ```
