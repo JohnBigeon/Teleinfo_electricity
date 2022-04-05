@@ -572,6 +572,9 @@ mkdir /var/log/teleinfo/
 ### Add the data source
 Click Add data source 'InfluxDB'.
 
+### Copy the dashboard
+Can be found here [https://github.com/SebastienReuiller/teleinfo-linky-with-raspberry/blob/master/grafana_dashboard_teleinfo.json](https://github.com/SebastienReuiller/teleinfo-linky-with-raspberry/blob/master/grafana_dashboard_teleinfo.json).
+
 ### Job scheduler with cron
 TODO
 
